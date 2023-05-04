@@ -22,6 +22,10 @@ class MyApp extends StatelessWidget {
     'Qual seu filme favorito?'
   ];
 
+  void responder() {
+    stderr.writeln('Pergunta respondida!');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,9 +37,15 @@ class MyApp extends StatelessWidget {
           // mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(perguntas[1]),
-            const ElevatedButton(onPressed: null, child: Text('Resposta 1')),
-            const ElevatedButton(onPressed: null, child: Text('Resposta 2')),
-            const ElevatedButton(onPressed: null, child: Text('Resposta 3')),
+            ElevatedButton(onPressed: responder, child: Text('Resposta 1')),
+            ElevatedButton(
+                onPressed: () {
+                  stderr.writeln('Pergunta respondida #02');
+                },
+                child: Text('Resposta 2')),
+            ElevatedButton(
+                onPressed: () => stderr.writeln('Pergunta respondida #03'),
+                child: Text('Resposta 3')),
           ],
         ),
       ),
