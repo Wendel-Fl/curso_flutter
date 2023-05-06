@@ -4,52 +4,59 @@ import 'dart:io';
 // import 'package:projeto_perguntas/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import './questao.dart';
 
 main() {
   FlutterError.onError = (details) {
     FlutterError.presentError(details);
     if (kReleaseMode) exit(1);
   };
-  runApp(const MyApp());
+  runApp(const PerguntaApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class _PerguntaAppState extends State<PerguntaApp> {
+  var _perguntaSelecionada = 0;
 
-  static final perguntas = [
-    'Qual seu carro favorito?',
-    'Qual seu herói favorito?',
-    'Qual seu filme favorito?'
-  ];
+  void _responder() {
+    setState(() {
+      _perguntaSelecionada++;
+    });
 
-  void responder() {
-    stderr.writeln('Pergunta respondida!');
+    stderr.writeln(_perguntaSelecionada);
   }
 
   @override
   Widget build(BuildContext context) {
+    final perguntas = [
+      'Qual seu carro favorito?',
+      'Qual seu herói favorito?',
+      'Qual seu filme favorito?'
+    ];
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Quiz'),
+          title: const Text('Perguntas'),
         ),
         body: Column(
-          // mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(perguntas[1]),
-            ElevatedButton(onPressed: responder, child: Text('Resposta 1')),
-            ElevatedButton(
-                onPressed: () {
-                  stderr.writeln('Pergunta respondida #02');
-                },
-                child: Text('Resposta 2')),
-            ElevatedButton(
-                onPressed: () => stderr.writeln('Pergunta respondida #03'),
-                child: Text('Resposta 3')),
+            Questao(perguntas[_perguntaSelecionada]),
+            ElevatedButton(onPressed: _responder, child: Text('Resposta 1')),
+            ElevatedButton(onPressed: _responder, child: Text('Resposta 2')),
+            ElevatedButton(onPressed: _responder, child: Text('Resposta 3')),
           ],
         ),
       ),
     );
+  }
+}
+
+class PerguntaApp extends StatefulWidget {
+  const PerguntaApp({super.key});
+
+  @override
+  _PerguntaAppState createState() {
+    return _PerguntaAppState();
   }
 }
 
