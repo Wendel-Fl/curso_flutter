@@ -1,18 +1,11 @@
 // import 'dart:html';
 import 'dart:io';
 
-// import 'package:projeto_perguntas/main.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import './questao.dart';
+import './resposta.dart';
 
-main() {
-  FlutterError.onError = (details) {
-    FlutterError.presentError(details);
-    if (kReleaseMode) exit(1);
-  };
-  runApp(const PerguntaApp());
-}
+main() => runApp(const PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
@@ -21,8 +14,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
     setState(() {
       _perguntaSelecionada++;
     });
-
-    stderr.writeln(_perguntaSelecionada);
   }
 
   @override
@@ -41,9 +32,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: <Widget>[
             Questao(perguntas[_perguntaSelecionada]),
-            ElevatedButton(onPressed: _responder, child: Text('Resposta 1')),
-            ElevatedButton(onPressed: _responder, child: Text('Resposta 2')),
-            ElevatedButton(onPressed: _responder, child: Text('Resposta 3')),
+            Resposta('Resposta 1', _responder),
+            Resposta('Resposta 2', _responder),
+            Resposta('Resposta 3', _responder),
           ],
         ),
       ),
