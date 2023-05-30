@@ -2,7 +2,6 @@ import 'package:expenses/components/transaction_form.dart';
 
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'components/transaction_form.dart';
 import 'components/transaction_list.dart';
 import 'models/transaction.dart';
 
@@ -59,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
     showModalBottomSheet(
         context: context,
         builder: (_) {
-          return TransactionForm((p0, p1) {});
+          return TransactionForm(_addTransaction);
         });
   }
 
