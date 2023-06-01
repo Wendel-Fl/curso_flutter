@@ -3,14 +3,15 @@ import '../models/transaction.dart';
 import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
-  const TransactionList(this.transactions, {super.key});
+  const TransactionList(this.transactions, this.onRemove, {super.key});
 
   final List<Transaction> transactions;
+  final void Function(String) onRemove;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 430,
       child: transactions.isEmpty
           ? Column(
               children: [
@@ -37,9 +38,7 @@ class TransactionList extends StatelessWidget {
                 return Card(
                   elevation: 5,
                   margin: const EdgeInsets.symmetric(
-                    vertical: 8.0,
-                    horizontal: 5.0
-                  ),
+                      vertical: 8.0, horizontal: 5.0),
                   child: ListTile(
                     leading: CircleAvatar(
                       backgroundColor: Theme.of(context).colorScheme.primary,
@@ -47,17 +46,22 @@ class TransactionList extends StatelessWidget {
                       radius: 30,
                       child: Padding(
                         padding: const EdgeInsets.all(6.0),
-                        child: FittedBox(                          
-                          child: Text('R\$${tr.value}'),
+                        child: FittedBox(
+                          child: Text('R\$${(tr.value).toStringAsFixed(2)}'),
                         ),
                       ),
                     ),
                     title: Text(
                       tr.title,
-                      style: Theme.of(context).textTheme.titleSmall,                      
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                     subtitle: Text(
                       DateFormat('d MMM y').format(tr.date),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () => onRemove(tr.id),
+                      icon: const Icon(Icons.delete),
+                      color: Theme.of(context).colorScheme.error,
                     ),
                   ),
                 );
