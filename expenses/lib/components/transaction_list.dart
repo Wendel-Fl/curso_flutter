@@ -11,23 +11,27 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return transactions.isEmpty
-        ? Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: Text(
-                  'Nenhuma Transação Cadastrada!',
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-              ),
-              SizedBox(
-                height: 200,
-                child: Image.asset(
-                  'assets/images/waiting.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ],
+        ? LayoutBuilder(
+            builder: (ctx, constraints) {
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    child: Text(
+                      'Nenhuma Transação Cadastrada!',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  ),
+                  SizedBox(
+                    height: constraints.maxHeight * 0.6,
+                    child: Image.asset(
+                      'assets/images/waiting.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              );
+            },
           )
         : ListView.builder(
             itemCount: transactions.length,
@@ -35,8 +39,8 @@ class TransactionList extends StatelessWidget {
               final tr = transactions[index];
               return Card(
                 elevation: 5,
-                margin: const EdgeInsets.symmetric(
-                    vertical: 8.0, horizontal: 5.0),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
                 child: ListTile(
                   leading: CircleAvatar(
                     backgroundColor: Theme.of(context).colorScheme.primary,
