@@ -49,7 +49,7 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
-    late String dateText;
+    String dateText;
     dateText = _selectedDate == null
         ? 'Nenhuma data selecionada!'
         : 'Data Selecionada: ${DateFormat('dd/MM/y').format(
