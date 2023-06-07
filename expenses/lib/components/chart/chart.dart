@@ -4,15 +4,13 @@ import '../chart/chart_bar.dart';
 import 'package:intl/intl.dart';
 
 class Chart extends StatelessWidget {
-  const Chart(this.recentTransaction, {super.key});
-
   final List<Transaction> recentTransaction;
+
+  const Chart(this.recentTransaction, {super.key});
 
   List<Map<String, Object>> get groupedTransactions {
     return List.generate(7, (index) {
-      final weekDay = DateTime.now().subtract(
-        Duration(days: index),
-      );
+      final weekDay = DateTime.now().subtract(Duration(days: index));
 
       double totalSum = 0.0;
 

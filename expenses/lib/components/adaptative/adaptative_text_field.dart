@@ -13,8 +13,8 @@ class AdaptativeTextField extends StatelessWidget {
     this.titleController,
     this.keyboardType = TextInputType.text,
     this.onSubmitted,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
