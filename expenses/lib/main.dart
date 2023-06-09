@@ -186,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
     return Platform.isIOS
         ? CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
-              middle: const Text('Depesas Pessoais'),
+              middle: const Text('Despesas Pessoais'),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: actions,
