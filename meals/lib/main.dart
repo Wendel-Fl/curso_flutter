@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
- 
+
 void main() => runApp(const MyApp());
- 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -10,26 +10,30 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DeliMeals',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const MyHomePage(title: 'DeliMeals'),
     );
   }
 }
- 
+
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  final String title;
+
+  const MyHomePage({required this.title, super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
- 
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DeliMeals'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
       ),
       body: const Center(
         child: Text('Navegar é preciso!!'),
