@@ -6,7 +6,7 @@ const dummyCategories = [
   Category(
     id: 'c1',
     title: 'Italiano',
-    color: Colors.purple,
+    color: Colors.pink,
   ),
   Category(
     id: 'c2',
@@ -26,32 +26,32 @@ const dummyCategories = [
   Category(
     id: 'c5',
     title: 'Leve & Saudável',
-    color: Colors.indigo,
+    color: Colors.teal,
   ),
   Category(
     id: 'c6',
     title: 'Exótica',
-    color: Colors.green,
+    color: Colors.lightGreen,
   ),
   Category(
     id: 'c7',
     title: 'Café da Manhã',
-    color: Colors.lightBlue,
+    color: Colors.green,
   ),
   Category(
     id: 'c8',
     title: 'Asiática',
-    color: Colors.lightGreen,
+    color: Colors.lightBlue,
   ),
   Category(
     id: 'c9',
     title: 'Francesa',
-    color: Colors.pink,
+    color: Colors.indigo,
   ),
   Category(
     id: 'c10',
     title: 'Verão',
-    color: Colors.teal,
+    color: Colors.purple,
   ),
 ];
 
