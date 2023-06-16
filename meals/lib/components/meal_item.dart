@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:meals/utils/app_routes.dart';
 import '../models/meal.dart';
+import '../utils/app_routes.dart';
+import 'package:flutter/material.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
@@ -11,7 +11,13 @@ class MealItem extends StatelessWidget {
     Navigator.of(context).pushNamed(
       AppRoutes.mealDetail,
       arguments: meal,
-    );
+    ).then((result) {
+      if (result == null) {
+        print('Sem resultado!');
+      } else {
+        print('O nome da refeição é $result');
+      }
+    },);
   }
 
   @override
@@ -30,8 +36,9 @@ class MealItem extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(15.0),
-                      topLeft: Radius.circular(15.0)),
+                    topRight: Radius.circular(15.0),
+                    topLeft: Radius.circular(15.0),
+                  ),
                   child: Image.network(
                     meal.imageUrl,
                     height: 250,
