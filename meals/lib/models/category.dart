@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Category extends StatelessWidget {
+class Category {
 
   final String id;
   final String title;
@@ -10,11 +10,5 @@ class Category extends StatelessWidget {
     required this.id,
     required this.title,
     this.color = Colors.orange,
-    super.key
   });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
 }
