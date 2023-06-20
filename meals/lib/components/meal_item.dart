@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class MealItem extends StatelessWidget {
   final Meal meal;
 
-  const MealItem(this.meal, {super.key});
+  const MealItem(this.meal, {Key? key}) : super(key: key);
 
   void _selectMeal(BuildContext context) {
     Navigator.of(context).pushNamed(

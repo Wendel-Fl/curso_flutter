@@ -2,7 +2,7 @@ import '../utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({super.key});
+  const MainDrawer({Key? key}) : super(key: key);
 
   Widget _createItem(IconData icon, String label, Function() onTap) {
     return ListTile(
