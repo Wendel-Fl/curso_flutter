@@ -21,7 +21,9 @@ class ProductItem extends StatelessWidget {
           backgroundColor: Colors.black87,
           leading: Consumer<Product>(
             builder: (ctx, product, _) => IconButton(
-              onPressed: () => product.toggleFavorite(),
+              onPressed: () {
+                product.toggleFavorite();
+              },
               icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
               ),
@@ -29,7 +31,7 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           title: Text(
-            product.title,
+            product.name,
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
