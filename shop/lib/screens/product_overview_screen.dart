@@ -23,26 +23,26 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
         title: Text(widget.title),
         actions: [
           PopupMenuButton(
-              itemBuilder: (_) => [
-                    const PopupMenuItem(
-                      value: FilterOption.favorite,
-                      child: Text('Somente favoritos'),
-                    ),
-                    const PopupMenuItem(
-                      value: FilterOption.all,
-                      child: Text('Todos'),
-                    ),
-                  ],
-              onSelected: (FilterOption selected) {
-                setState(() {
-                if (selected == FilterOption.favorite) {
-                  _showFavoriteOnly = true;
-                } else {
-                  _showFavoriteOnly = false;
-                }
-                });
-                print(_showFavoriteOnly);
-              }),
+            itemBuilder: (_) => [
+              const PopupMenuItem(
+                value: FilterOption.favorite,
+                child: Text('Somente favoritos'),
+              ),
+              const PopupMenuItem(
+                value: FilterOption.all,
+                child: Text('Todos'),
+              ),
+            ],
+            onSelected: (FilterOption selected) {
+              setState(() {
+              if (selected == FilterOption.favorite) {
+                _showFavoriteOnly = true;
+              } else {
+                _showFavoriteOnly = false;
+              }
+              });
+            },
+          ),
         ],
       ),
       body: ProductGrid(_showFavoriteOnly),
