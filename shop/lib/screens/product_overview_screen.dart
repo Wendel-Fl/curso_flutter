@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop/components/app_drawer.dart';
+import 'package:shop/components/badgee.dart';
+import 'package:shop/utils/app_routes.dart';
 
 import '../components/product_grid.dart';
+import '../models/cart.dart';
 
 enum FilterOption { favorite, all }
 
 class ProductOverviewScreen extends StatefulWidget {
-  final String title;
-
-  const ProductOverviewScreen({required this.title, super.key});
+  const ProductOverviewScreen({super.key});
 
   @override
   State<ProductOverviewScreen> createState() => _ProductOverviewScreenState();
@@ -18,9 +21,10 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // final provider = Provider.of<ProductList>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Minha Loja'),
         actions: [
           PopupMenuButton(
             itemBuilder: (_) => [
@@ -35,17 +39,32 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
             ],
             onSelected: (FilterOption selected) {
               setState(() {
-              if (selected == FilterOption.favorite) {
-                _showFavoriteOnly = true;
-              } else {
-                _showFavoriteOnly = false;
-              }
+                if (selected == FilterOption.favorite) {
+                  // provider.showFavoriteOnly();
+                  _showFavoriteOnly = true;
+                } else {
+                  // provider.showAll();
+                  _showFavoriteOnly = false;
+                }
               });
             },
           ),
+          Consumer<Cart>(
+            child: IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(AppRoutes.cart);
+              },
+              icon: const Icon(Icons.shopping_cart),
+            ),
+            builder: (ctx, cart, child) => Badgee(
+              value: cart.countItems.toString(),
+              child: child!,
+            ),
+          )
         ],
       ),
       body: ProductGrid(_showFavoriteOnly),
+      drawer: const AppDrawer(),
     );
   }
 }
