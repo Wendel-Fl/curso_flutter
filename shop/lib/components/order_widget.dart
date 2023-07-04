@@ -23,7 +23,7 @@ class _OrderWidgetState extends State<OrderWidget> {
           ListTile(
             title: Text('R\$ ${widget.order.total.toStringAsFixed(2)}'),
             subtitle: Text(
-              DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
+              DateFormat('dd/MM/yyyy hh:mm').format(widget.order.date),
             ),
             trailing: IconButton(
               onPressed: () {
