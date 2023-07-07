@@ -16,17 +16,18 @@ class AuthForm extends StatefulWidget {
 class _AuthFormState extends State<AuthForm> {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool _isLoading = false;
-  AuthMode _authMode = AuthMode.login;
   final Map<String, String> _authData = {
     'email': '',
     'password': '',
   };
 
+  bool _isObscured = false;
+  bool _isLoading = false;
+
+  AuthMode _authMode = AuthMode.login;
+
   bool _isLogin() => _authMode == AuthMode.login;
   bool _isSignUp() => _authMode == AuthMode.signUp;
-
-  bool _isObscured = false;
 
   @override
   void initState() {

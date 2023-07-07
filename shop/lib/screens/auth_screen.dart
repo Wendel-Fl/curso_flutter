@@ -23,7 +23,7 @@ class AuthScreen extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             width: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -50,15 +50,16 @@ class AuthScreen extends StatelessWidget {
                   child: Text(
                     'Minha Loja',
                     style: TextStyle(
-                        fontSize: 45,
-                        fontFamily: 'Anton',
-                        color: Theme.of(context)
-                            .primaryTextTheme
-                            .headlineSmall
-                            ?.color),
+                      fontSize: 45,
+                      fontFamily: 'Anton',
+                      color: Theme.of(context)
+                          .primaryTextTheme
+                          .headlineSmall
+                          ?.color,
+                    ),
                   ),
                 ),
-                AuthForm(),
+                const AuthForm(),
               ],
             ),
           ),
